@@ -1,0 +1,32 @@
+{
+    "intents": [{
+            "tag": "greetings",
+            "patterns": [
+                "Hey",
+                "Hello",
+                "Hi",
+                "Good Day",
+                "Good Morning",
+                "Salutations",
+                "Greetings",
+                "Heyo",
+                "Howdy"
+            ]
+        },
+        {
+            "tag": "bye",
+            "patterns": [
+                "Bye",
+                "Good Bye",
+                "See you",
+                "Farewell",
+                "See ya",
+                "Good night",
+                "Fare the well",
+                "Bye-bye",
+                "Later"
+            ]
+        }
+    ]
+
+}
