@@ -15,7 +15,6 @@ class ArticleFinder:
         response = requests.get(search_query_url)
         soup = BeautifulSoup(response.text, 'html.parser')
         search_results = soup.find_all('li', {'class': 'search-results-article-container'})
-        print(search_results[0])
         articles = []
 
         for result in search_results:
