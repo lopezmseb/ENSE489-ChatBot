@@ -15,7 +15,7 @@ parser = English()
 
 def pre_process(document):
     clean_tokens = [ token.lemma_.lower().strip() for token in document]
-    clean_tokens = [ toekn for token in clean_tokens if token not in STOP_WORDS and token not in punctuations]
+    clean_tokens = [ token for token in clean_tokens if token not in STOP_WORDS and token not in punctuations]
     tokens = [token.text for token in document]
     lower_case_tokens = list(map(str.lower, tokens))
     
