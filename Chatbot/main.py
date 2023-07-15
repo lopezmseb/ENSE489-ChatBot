@@ -1,4 +1,6 @@
 from neuralintent import GenericAssistant
+from articlefinder import ArticleFinder
+from articleSummary import ArticleSummarizer
 import random
 import sys
 import os
@@ -30,18 +32,50 @@ def wrap_bot(text):
 
 def greetingFunction():
     index = random.randrange(0, len(greetings))
-    wrap_bot(greetings[index])
+    print(wrap_bot(greetings[index]))
 
 
 def bye():
     index = random.randrange(0, len(goodbyes))
-    wrap_bot(goodbyes[index])
+    print(wrap_bot(goodbyes[index]))
     sys.exit(0)
+
+def article_summary():
+    url = input(wrap_bot("Enter URL for article: "))
+    num_sentences = int(input(wrap_bot("Please enter how many sentences you would like in your summary: ")))
+
+    article_sum = ArticleSummarizer(url)
+
+    print(wrap_bot(article_sum.generate_summary(num_sentences)))
+
+def find_articles():
+    topic = input(wrap_bot("Enter topic you want to know about: "))
+    articles = ArticleFinder(topic).get_articles()
+
+    print(wrap_bot("Here are the list of articles found: "))
+    for (index, item) in enumerate(articles,1):
+        print(f"{index}. {item['title']}")
+
+    chosen_article_index = int(input(wrap_bot("Please select which article interests you most (1,2,3,etc.): ")))
+    num_sentences = int(input(wrap_bot("Please enter the number of sentences for your summary: ")))
+    chosen_article = articles[chosen_article_index - 1]
+
+    article_sum = ArticleSummarizer(chosen_article["url"])
+
+
+    print(wrap_bot(article_sum.generate_summary(num_sentences)))
+    print("Rememeber do your own research and validate the information being given here before making financial decisions!")
+    print(f"Here's the URL to read the full article: {chosen_article['url']}")
+
+
+
 
 
 mappings = {
     'greetings': greetingFunction,
-    'bye': bye
+    'bye': bye,
+    'article_summary': article_summary,
+    'find_articles': find_articles
 }
 
 assistant = GenericAssistant('intents.json', mappings)

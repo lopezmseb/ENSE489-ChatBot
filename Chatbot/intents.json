@@ -1,32 +1,93 @@
 {
-    "intents": [{
-            "tag": "greetings",
-            "patterns": [
-                "Hey",
-                "Hello",
-                "Hi",
-                "Good Day",
-                "Good Morning",
-                "Salutations",
-                "Greetings",
-                "Heyo",
-                "Howdy"
-            ]
-        },
-        {
-            "tag": "bye",
-            "patterns": [
-                "Bye",
-                "Good Bye",
-                "See you",
-                "Farewell",
-                "See ya",
-                "Good night",
-                "Fare the well",
-                "Bye-bye",
-                "Later"
-            ]
-        }
-    ]
-
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": [
+        "Hey",
+        "Hello",
+        "Hi",
+        "Good Day",
+        "Good Morning",
+        "Salutations",
+        "Greetings",
+        "Heyo",
+        "Howdy"
+      ]
+    },
+    {
+      "tag": "bye",
+      "patterns": [
+        "Bye",
+        "Good Bye",
+        "See you",
+        "Farewell",
+        "See ya",
+        "Good night",
+        "Fare the well",
+        "Bye-bye",
+        "Later"
+      ]
+    },
+    {
+      "tag": "article_summary",
+      "patterns": [
+        "Can you summarize this article for me?",
+        "What's the summary of this article?",
+        "Could you give me a brief overview of the article?",
+        "I'd like a summary of the article, please.",
+        "Can you provide a synopsis of the article?",
+        "Tell me the main points of the article.",
+        "Summarize the article in a few sentences.",
+        "What are the key takeaways from the article?",
+        "Give me a quick summary of the article.",
+        "What's the gist of the article?",
+        "I'm looking for a summary of this article.",
+        "Could you condense the article into a summary?",
+        "Provide me with an abstract of the article.",
+        "Can you give me a short description of the article?",
+        "What's the main idea behind the article?",
+        "In a few sentences, explain what the article is about.",
+        "I'd like to get a summarized version of the article.",
+        "Tell me the highlights of the article.",
+        "Can you break down the article into a summary?",
+        "What's the essence of the article?",
+        "Could you give me a quick rundown of the article?",
+        "Provide me with a nutshell summary of the article.",
+        "I want to understand the article in a concise way.",
+        "Sum up the article in just a few words.",
+        "What's the central message of the article?",
+        "Give me a brief recap of the article."
+      ]
+    },
+    {
+      "tag": "find_articles",
+      "patterns": [
+        "Find articles about <topic>.",
+        "Can you recommend articles on <topic>?",
+        "I'm interested in reading articles about <topic>.",
+        "Are there any recent articles on <topic>?",
+        "What are some articles related to <topic>?",
+        "I need information on <topic>. Any articles available?",
+        "Could you provide me with articles about <topic>?",
+        "Where can I find articles discussing <topic>?",
+        "Do you have any suggested articles on <topic>?",
+        "Looking for articles that cover <topic>.",
+        "What are some good articles about <topic>?",
+        "Can you point me to articles on <topic>?",
+        "Are there any notable articles on <topic>?",
+        "I'd like to explore articles on <topic>.",
+        "Any recommended articles on <topic>?",
+        "Where can I find more information about <topic>?",
+        "Please share articles regarding <topic>.",
+        "What are some recent articles on <topic>?",
+        "Could you suggest articles related to <topic>?",
+        "Looking for insightful articles about <topic>.",
+        "I'm searching for articles covering <topic>.",
+        "Are there any informative articles about <topic>?",
+        "What are some reliable articles on <topic>?",
+        "Can you help me find articles discussing <topic>?",
+        "I'm curious to read articles on <topic>."
+      ]
+    }
+  ]
 }
