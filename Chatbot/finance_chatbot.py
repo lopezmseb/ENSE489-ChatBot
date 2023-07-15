@@ -4,7 +4,6 @@ from neuralintent import GenericAssistant
 class FinanceChatbot():
     def __init__(self, load_model=False):
         mappings = IntentCommands().mappings
-        print(mappings)
         self.bot = GenericAssistant('intents.json', mappings)
 
         if (load_model):
