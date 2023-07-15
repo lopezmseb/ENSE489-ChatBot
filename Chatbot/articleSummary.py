@@ -10,7 +10,7 @@ from heapq import nlargest
 punctuations = string.punctuation
 from spacy.language import Language
 
-from articlefinder import ArticleFinder
+# from articlefinder import ArticleFinder
 
 
 class ArticleSummarizer:
@@ -18,10 +18,11 @@ class ArticleSummarizer:
         self.nlp = English()
         self.nlp.add_pipe('sentencizer')
         self.parser = English()
-        self.article = Article(article_url)
-        self.article.download()
-        self.article.parse()
-        self.article_text = self.article.text
+        article = Article(article_url)
+        article.download()
+        article.parse()
+
+        self.article_text = article.text
     def pre_process(self, document):
         clean_tokens = [ token.lemma_.lower().strip() for token in document]
         clean_tokens = [ token for token in clean_tokens if token not in STOP_WORDS and token not in punctuations]
@@ -54,19 +55,19 @@ class ArticleSummarizer:
         target_document = self.parser(self.article_text)
         importance = self.sentences_importance(self.article_text, self.generate_numbers_vectors(self.pre_process(target_document)))
         summary = nlargest(rank, importance, key=importance.get)
+
         summary_string = ""
-
-
         for i in summary:
-            summary_string += i.text.strip() + " "
+            summary_string += ' '.join(i.text.split()) + "\n"
 
         return summary_string
 
-
+#
 # if __name__ == '__main__':
 #     articles = ArticleFinder("tips").get_random_article()
 #     articleSum = ArticleSummarizer(articles['url'])
-#     articleSum_text = articleSum.generate_summary(20)
+#     print(articleSum.article_text)
+#     articleSum_text = articleSum.generate_summary(14)
 #     print(articleSum_text)
 
 

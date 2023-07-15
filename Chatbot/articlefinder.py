@@ -29,7 +29,7 @@ class ArticleFinder:
         return self.articles
 
     def get_random_article(self):
-        random_index = random.randint(0, len(self.articles))
+        random_index = random.randint(0, len(self.articles) - 1)
         return self.articles[random_index]
 
 

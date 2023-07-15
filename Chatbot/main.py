@@ -48,25 +48,34 @@ def article_summary():
 
     print(wrap_bot(article_sum.generate_summary(num_sentences)))
 
+def find_articles():
+    topic = input(wrap_bot("Enter topic you want to know about: "))
+    articles = ArticleFinder(topic).get_articles()
 
-    # topic = input(wrap_bot("Enter topic you want to know about: "))
-    # articles = ArticleFinder(topic).get_articles()
-    #
-    # print(wrap_bot("Here are the list of articles found: "))
-    # for (item, index) in enumerate(articles,1):
-    #     print(f"{index}. {item}")
-    #
-    # chosen_article_index = int(input(wrap_bot("Please select which article interests you most (1,2,3,etc.)")))
-    #
-    # chosen_article = articles[chosen_article_index - 1]
-    #
+    print(wrap_bot("Here are the list of articles found: "))
+    for (index, item) in enumerate(articles,1):
+        print(f"{index}. {item['title']}")
+
+    chosen_article_index = int(input(wrap_bot("Please select which article interests you most (1,2,3,etc.): ")))
+    num_sentences = int(input(wrap_bot("Please enter the number of sentences for your summary: ")))
+    chosen_article = articles[chosen_article_index - 1]
+
+    article_sum = ArticleSummarizer(chosen_article["url"])
+
+
+    print(wrap_bot(article_sum.generate_summary(num_sentences)))
+    print("Rememeber do your own research and validate the information being given here before making financial decisions!")
+    print(f"Here's the URL to read the full article: {chosen_article['url']}")
+
+
 
 
 
 mappings = {
     'greetings': greetingFunction,
     'bye': bye,
-    'article_summary' : article_summary
+    'article_summary': article_summary,
+    'find_articles': find_articles
 }
 
 assistant = GenericAssistant('intents.json', mappings)
