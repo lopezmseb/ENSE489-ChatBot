@@ -26,6 +26,37 @@
                 "Bye-bye",
                 "Later"
             ]
+        },
+        {
+         "tag": "article_summary",
+           "patterns": [
+    "Can you summarize this article for me?",
+    "What's the summary of this article?",
+    "Could you give me a brief overview of the article?",
+    "I'd like a summary of the article, please.",
+    "Can you provide a synopsis of the article?",
+    "Tell me the main points of the article.",
+    "Summarize the article in a few sentences.",
+    "What are the key takeaways from the article?",
+    "Give me a quick summary of the article.",
+    "What's the gist of the article?",
+    "I'm looking for a summary of this article.",
+    "Could you condense the article into a summary?",
+    "Provide me with an abstract of the article.",
+    "Can you give me a short description of the article?",
+    "What's the main idea behind the article?",
+    "In a few sentences, explain what the article is about.",
+    "I'd like to get a summarized version of the article.",
+    "Tell me the highlights of the article.",
+    "Can you break down the article into a summary?",
+    "What's the essence of the article?",
+    "Could you give me a quick rundown of the article?",
+    "Provide me with a nutshell summary of the article.",
+    "I want to understand the article in a concise way.",
+    "Sum up the article in just a few words.",
+    "What's the central message of the article?",
+    "Give me a brief recap of the article."
+  ]
         }
     ]
 

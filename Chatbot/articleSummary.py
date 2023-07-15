@@ -54,7 +54,13 @@ class ArticleSummarizer:
         target_document = self.parser(self.article_text)
         importance = self.sentences_importance(self.article_text, self.generate_numbers_vectors(self.pre_process(target_document)))
         summary = nlargest(rank, importance, key=importance.get)
-        return summary
+        summary_string = ""
+
+
+        for i in summary:
+            summary_string += i.text.strip() + " "
+
+        return summary_string
 
 
 # if __name__ == '__main__':

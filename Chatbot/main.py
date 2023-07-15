@@ -1,4 +1,6 @@
 from neuralintent import GenericAssistant
+from articlefinder import ArticleFinder
+from articleSummary import ArticleSummarizer
 import random
 import sys
 import os
@@ -30,18 +32,41 @@ def wrap_bot(text):
 
 def greetingFunction():
     index = random.randrange(0, len(greetings))
-    wrap_bot(greetings[index])
+    print(wrap_bot(greetings[index]))
 
 
 def bye():
     index = random.randrange(0, len(goodbyes))
-    wrap_bot(goodbyes[index])
+    print(wrap_bot(goodbyes[index]))
     sys.exit(0)
+
+def article_summary():
+    url = input(wrap_bot("Enter URL for article: "))
+    num_sentences = int(input(wrap_bot("Please enter how many sentences you would like in your summary: ")))
+
+    article_sum = ArticleSummarizer(url)
+
+    print(wrap_bot(article_sum.generate_summary(num_sentences)))
+
+
+    # topic = input(wrap_bot("Enter topic you want to know about: "))
+    # articles = ArticleFinder(topic).get_articles()
+    #
+    # print(wrap_bot("Here are the list of articles found: "))
+    # for (item, index) in enumerate(articles,1):
+    #     print(f"{index}. {item}")
+    #
+    # chosen_article_index = int(input(wrap_bot("Please select which article interests you most (1,2,3,etc.)")))
+    #
+    # chosen_article = articles[chosen_article_index - 1]
+    #
+
 
 
 mappings = {
     'greetings': greetingFunction,
-    'bye': bye
+    'bye': bye,
+    'article_summary' : article_summary
 }
 
 assistant = GenericAssistant('intents.json', mappings)
