@@ -11,14 +11,12 @@ class IntentCommands():
         with(open("./static_responses.json", "r") as file):
             json_file = json.load(file)
             self.greetings = json_file["greetings"]
-            print(self.greetings)
             self.goodbyes = json_file["goodbyes"]
         self.mappings = {}
 
         for attr_name in dir(self):
             attr = getattr(self, attr_name)
             if(not attr_name.startswith("__") and callable(attr)):
-                print(attr_name)
                 self.mappings[attr_name] = attr
 
     def greeting(self):
@@ -61,6 +59,6 @@ class IntentCommands():
         print(f"Here's the URL to read the full article: {chosen_article['url']}")
 
 
-
-if __name__ == '__main__':
-    IntentCommands()
+#
+# if __name__ == '__main__':
+#     IntentCommands()
