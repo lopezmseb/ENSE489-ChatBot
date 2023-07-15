@@ -1,5 +1,5 @@
 import json
-from ui_helper import speak, query
+from ui_helper import speak, query, bot_name
 from articlefinder import ArticleFinder
 from articleSummary import ArticleSummarizer
 import random
@@ -45,7 +45,7 @@ class IntentCommands():
         for (index, item) in enumerate(articles, 1):
             print(f"{index}. {item['title']}")
 
-        chosen_article_index = query("Please select which article interests you most (1,2,3,etc.): ")
+        chosen_article_index = int(query("Please select which article interests you most (1,2,3,etc.): "))
         num_sentences = int(query("Please enter the number of sentences for your summary: "))
         chosen_article = articles[chosen_article_index - 1]
 
@@ -56,6 +56,14 @@ class IntentCommands():
             "Rememeber do your own research and validate the information being given here before making financial decisions!")
         print(f"Here's the URL to read the full article: {chosen_article['url']}")
 
+    def introduce_self(self):
+        speak(f"Hello! I am the Personal Finance Chatbot, {bot_name}. I am here to help you in matters of Personal Finance!")
+        self.help()
+
+    def help(self):
+        speak("Here's a list of things I can do currently: ")
+        for i, item in enumerate(self.mappings.keys(), 1):
+            print(f"{i}: {item}")
 
 #
 # if __name__ == '__main__':

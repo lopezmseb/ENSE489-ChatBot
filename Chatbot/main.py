@@ -13,20 +13,20 @@ def wrap_text(name, text):
 
 if (not load_model):
     res = input("Load model from file? (Y/N) ")
-    if (res.lower() == "y"):
+    if (res.lower().startswith("y")):
         load_model = True
     else:
         load_model = False
 
-with open(file_path, "w+") as file:
+with open(file_path, "r+") as file:
     try:
         data = json.load(file)
     except json.JSONDecodeError:
         data = {}
 
-    try:
-        name = data.get('name')
-    except(KeyError):
+    if("name" in data.keys()):
+        name = data["name"]
+    else:
         name = input("What is your name? ")
         data["name"] = name
 

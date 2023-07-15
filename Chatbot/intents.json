@@ -122,6 +122,68 @@
         "Can you help me find articles discussing <topic>?",
         "I'm curious to read articles on <topic>."
       ]
+    },
+    {
+      "tag": "introduce_self",
+      "patterns": [
+        "Who are you?",
+        "Tell me about yourself.",
+        "Introduce yourself.",
+        "Can you give me a brief introduction?",
+        "How would you describe yourself?",
+        "What's your background?",
+        "Share a bit about who you are.",
+        "What can you tell me about yourself?",
+        "Who are you?",
+        "What should I know about you?",
+        "Could you introduce yourself briefly?",
+        "What's your story?",
+        "What are your personal details?",
+        "Can you provide some information about yourself?",
+        "Tell me a little bit about your background.",
+        "What's your name and what do you do?",
+        "Give me an introduction, please.",
+        "How do you define yourself?",
+        "What should I know about you as a person?",
+        "Can you describe yourself in a few sentences?",
+        "What are your interests and passions?",
+        "Share some details about your life and experiences.",
+        "Can you talk about your skills and expertise?",
+        "What led you to where you are today?",
+        "What are some notable things about you?",
+        "Describe yourself and your journey."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "Help",
+        "What can you do?",
+        "What are your abilities?",
+        "Tell me about your features.",
+        "What functionalities do you have?",
+        "How can you assist me?",
+        "What services do you provide?",
+        "Explain what you're capable of.",
+        "What tasks can you perform?",
+        "What skills do you possess?",
+        "How do you help users?",
+        "What are your capabilities?",
+        "Give me an overview of your abilities.",
+        "What kind of support do you offer?",
+        "Can you perform specific tasks?",
+        "Enlighten me about your functions.",
+        "How do you assist people?",
+        "What are your special features?",
+        "What services are you programmed to deliver?",
+        "Describe your range of capabilities.",
+        "Can you explain what you're designed to do?",
+        "What are your strengths?",
+        "In what ways can you be helpful?",
+        "Provide some examples of your tasks.",
+        "What expertise do you have?",
+        "How can you make my life easier?"
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 import sys
 
-bot_name = "Bot: "
+bot_name = "Bot"
 
 def speak(message):
     print(f"{bot_name}: {message}")
