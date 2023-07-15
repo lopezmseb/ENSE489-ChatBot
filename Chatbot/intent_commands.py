@@ -38,8 +38,6 @@ class IntentCommands():
         speak(article_sum.generate_summary(num_sentences))
 
     def find_articles(self):
-        print()
-
         topic = query("Enter topic you want to know about: ")
         articles = ArticleFinder(topic).get_articles()
 
