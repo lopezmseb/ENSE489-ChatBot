@@ -184,6 +184,36 @@
         "What expertise do you have?",
         "How can you make my life easier?"
       ]
+    },
+    {
+      "tag": "sell_stock",
+      "patterns": [
+        "Is it a good time to sell my stock?",
+        "What are the signs that indicate selling a stock?",
+        "When should I consider selling my stock?",
+        "Should I sell my shares in this company?",
+        "What factors should I consider before selling a stock?",
+        "Is selling my stock now a wise decision?",
+        "How do I know if it's the right moment to sell my stock?",
+        "What are the indicators to sell a stock?",
+        "When is the right time to sell stocks?",
+        "Should I consider selling my stock holdings?",
+        "What are the reasons to sell a stock?",
+        "Is it a good idea to sell my stock at the current price?",
+        "When does it make sense to sell a stock?",
+        "Should I sell or hold onto my stock?",
+        "What are the risks of holding onto a stock vs. selling it?",
+        "How can I determine if I should sell my stock?",
+        "Are there any red flags that suggest selling my stock?",
+        "What are the circumstances where selling a stock is recommended?",
+        "Should I sell my stock now or wait for a better opportunity?",
+        "What should I analyze before deciding to sell a stock?",
+        "When does selling a stock align with my investment goals?",
+        "Is selling this stock the right move for my portfolio?",
+        "Should I take profits and sell my stock?",
+        "What are the potential downsides of selling my stock?",
+        "Are there any external factors that indicate selling this stock?"
+      ]
     }
   ]
 }

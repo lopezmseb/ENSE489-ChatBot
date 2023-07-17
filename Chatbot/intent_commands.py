@@ -2,6 +2,9 @@ import json
 from ui_helper import speak, query, bot_name
 from articlefinder import ArticleFinder
 from articleSummary import ArticleSummarizer
+import pandas as pd
+import requests
+from datetime import datetime, timedelta
 import random
 import sys
 
@@ -65,6 +68,62 @@ class IntentCommands():
         for i, item in enumerate(self.mappings.keys(), 1):
             print(f"{i}: {item}")
 
+    def sell_stock(self):
+        stock_name = query("Please enter stock name: ")
+        time_series = "weekly"
+
+        API_KEY = "4E4DQDQENI2O4EJM"
+
+        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_{time_series}&symbol={stock_name}&apikey={API_KEY}'
+
+        res = requests.get(url)
+
+        data = pd.DataFrame(res.json()['Weekly Time Series'])
+        price_now = float(data[data.keys()[0]]['2. high'])
+
+        print(f"Stock Price Today: {price_now}")
+        print("==========================\n")
+
+        week_data = data.keys()[1:4]
+        for i in week_data:
+            price_then = float(data[i]['2. high'])
+
+            print(f"Prices on {i}:")
+            print("==========================")
+            print(f"Relative Gains: {((price_now - price_then) / price_then) * 100}%")
+            print(f"Absolute Gains: {price_now - price_then}")
+            print("\n")
+
+
+
+
+
+
+
 #
 # if __name__ == '__main__':
-#     IntentCommands()
+    # curr_date = datetime.now()
+    # stock_name = "AAPL"
+    # time_series = "weekly"
+    #
+    # API_KEY = "4E4DQDQENI2O4EJM"
+    #
+    # url =  f'https://www.alphavantage.co/query?function=TIME_SERIES_{time_series}&symbol={stock_name}&apikey={API_KEY}'
+    #
+    # res = requests.get(url)
+    #
+    # data = pd.DataFrame(res.json()['Weekly Time Series'])
+    # price_now = float(data[data.keys()[0]]['2. high'])
+    #
+    # print(f"Stock Price Today: {price_now}")
+    # print("==========================\n")
+    #
+    # week_data = data.keys()[1:4]
+    # for i in week_data:
+    #     price_then = float(data[i]['2. high'])
+    #
+    #     print(f"Prices on {i}:")
+    #     print("==========================")
+    #     print(f"Relative Gains: {((price_now - price_then) / price_then) * 100}%")
+    #     print(f"Absolute Gains: {price_now - price_then}")
+    #     print("\n")
