@@ -4,6 +4,7 @@ from articlefinder import ArticleFinder
 from articleSummary import ArticleSummarizer
 import random
 import sys
+from transformers import PegasusForConditionalGeneration, PegasusTokenizer
 
 
 class IntentCommands():
@@ -65,6 +66,7 @@ class IntentCommands():
         for i, item in enumerate(self.mappings.keys(), 1):
             print(f"{i}: {item}")
 
-#
+
 # if __name__ == '__main__':
 #     IntentCommands()
+#

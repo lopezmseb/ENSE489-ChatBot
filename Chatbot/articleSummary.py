@@ -9,8 +9,9 @@ from newspaper import Article
 from heapq import nlargest
 punctuations = string.punctuation
 from spacy.language import Language
+from transformers import PegasusTokenizer, TFPegasusForConditionalGeneration, pipeline
 
-# from articlefinder import ArticleFinder
+from articlefinder import ArticleFinder
 
 
 class ArticleSummarizer:
@@ -22,7 +23,20 @@ class ArticleSummarizer:
         article.download()
         article.parse()
 
+        model_name = "google/pegasus-xsum"
+
+        self.pegasus_tokenizer = PegasusTokenizer.from_pretrained(model_name)
+
+        self.pegasus_model = TFPegasusForConditionalGeneration.from_pretrained(model_name)
+
         self.article_text = article.text
+
+    def pegasus_summary(self):
+        tokens = self.pegasus_tokenizer(self.article_text, truncation=True, padding="longest", return_tensors="pt")
+
+        encoded_summary = self.pegasus_model(**tokens)
+        decoded_summary = self.pegasus_tokenizer.decode(encoded_summary[0], skip_special_tokens=True)
+        return decoded_summary
     def pre_process(self, document):
         clean_tokens = [ token.lemma_.lower().strip() for token in document]
         clean_tokens = [ token for token in clean_tokens if token not in STOP_WORDS and token not in punctuations]
@@ -63,11 +77,13 @@ class ArticleSummarizer:
         return summary_string
 
 #
-# if __name__ == '__main__':
-#     articles = ArticleFinder("tips").get_random_article()
-#     articleSum = ArticleSummarizer(articles['url'])
-#     print(articleSum.article_text)
-#     articleSum_text = articleSum.generate_summary(14)
-#     print(articleSum_text)
+if __name__ == '__main__':
+    articles = ArticleFinder("tips").get_random_article()
+    articleSum = ArticleSummarizer(articles['url'])
+    articleSum_text = articleSum.generate_summary(14)
+
+    print(f"{articleSum_text.__name__}:\n{articleSum_text}")
+    print(f"{articleSum.pegasus_summary().__name__}:\n{articleSum.pegasus_summary()}")
+
 
 
