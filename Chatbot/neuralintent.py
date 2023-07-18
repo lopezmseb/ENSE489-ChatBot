@@ -154,7 +154,7 @@ class GenericAssistant(IAssistant):
 
     def _predict_class(self, sentence):
         p = self._bag_of_words(sentence, self.words)
-        res = self.model.predict(np.array([p]))[0]
+        res = self.model.predict(np.array([p]), verbose=0)[0]
         ERROR_THRESHOLD = 0.1
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 

@@ -4,6 +4,7 @@ from articlefinder import ArticleFinder
 from articleSummary import ArticleSummarizer
 import pandas as pd
 import requests
+import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import random
 import sys
@@ -94,36 +95,65 @@ class IntentCommands():
             print(f"Absolute Gains: {price_now - price_then}")
             print("\n")
 
+        res = query("Would you like to graph the stock data? (Y/N): ")
+
+        if(res.lower().startswith("y")):
+            self.graph_stock(stock_data=data)
+
+    def graph_stock(self, stock_data=None):
+        stock_name = ""
+        if(stock_data is None):
+            stock_name = query("Please enter stock name: ")
+            time_series = "weekly"
+
+            API_KEY = "4E4DQDQENI2O4EJM"
+
+            url = f'https://www.alphavantage.co/query?function=TIME_SERIES_{time_series}&symbol={stock_name}&apikey={API_KEY}'
+
+            res = requests.get(url)
+
+            stock_data = pd.DataFrame(res.json()['Weekly Time Series'])
+
+        closing_prices = []
+
+        for i, item in enumerate(stock_data):
+            if i % 4 == 0:
+                closing_prices.append(stock_data[item]['4. close'])
+
+        plt.figure(figsize=(10, 6))
+        plt.plot(closing_prices)
+
+        plt.title(f"Stock Price ({stock_name})")
+        plt.xlabel('Date')
+        plt.ylabel('Price')
+        plt.grid(True)
+        plt.show()
 
 
-
-
-
-
-#
 # if __name__ == '__main__':
-    # curr_date = datetime.now()
-    # stock_name = "AAPL"
-    # time_series = "weekly"
-    #
-    # API_KEY = "4E4DQDQENI2O4EJM"
-    #
-    # url =  f'https://www.alphavantage.co/query?function=TIME_SERIES_{time_series}&symbol={stock_name}&apikey={API_KEY}'
-    #
-    # res = requests.get(url)
-    #
-    # data = pd.DataFrame(res.json()['Weekly Time Series'])
-    # price_now = float(data[data.keys()[0]]['2. high'])
-    #
-    # print(f"Stock Price Today: {price_now}")
-    # print("==========================\n")
-    #
-    # week_data = data.keys()[1:4]
-    # for i in week_data:
-    #     price_then = float(data[i]['2. high'])
-    #
-    #     print(f"Prices on {i}:")
-    #     print("==========================")
-    #     print(f"Relative Gains: {((price_now - price_then) / price_then) * 100}%")
-    #     print(f"Absolute Gains: {price_now - price_then}")
-    #     print("\n")
+#     stock_name = "AAPL"
+#     time_series = "weekly"
+#
+#     API_KEY = "4E4DQDQENI2O4EJM"
+#
+#     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_{time_series}&symbol={stock_name}&apikey={API_KEY}'
+#
+#     res = requests.get(url)
+#
+#     stock_data = pd.DataFrame(res.json()['Weekly Time Series'])
+#
+#     # stock_data.index = pd.to_datetime(stock_data.index)
+#     closing_prices = []
+#
+#     for i, item in enumerate(stock_data):
+#         if i % 4 == 0:
+#             closing_prices.append(stock_data[item]['4. close'])
+#
+#     plt.figure(figsize=(10, 6))
+#     plt.plot(closing_prices)
+#
+#     plt.title(f"Stock Price ({stock_name})")
+#     plt.xlabel('Date')
+#     plt.ylabel('Price')
+#     plt.grid(True)
+#     plt.show()
