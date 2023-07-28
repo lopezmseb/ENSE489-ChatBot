@@ -1,6 +1,5 @@
 .idea
 .venv
-user_info.json
 assistant_model.h5
 assistant_model_classes.pkl
 assistant_model_words.pkl

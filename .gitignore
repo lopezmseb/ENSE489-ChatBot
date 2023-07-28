@@ -1,6 +1,5 @@
 Chatbot/.idea
 Chatbot/.venv
-Chatbot/user_info.json
 Chatbot/assistant_model.h5
 Chatbot/assistant_model_classes.pkl
 Chatbot/assistant_model_words.pkl
